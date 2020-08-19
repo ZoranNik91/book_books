@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<title>Book Your Favourite Books</title>
+	<!--
+
+    -->
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="team" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+
+     <!-- MAIN CSS style.css -->
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<body>
+
+     <!-- PRE LOADER -->
+     <section class="preloader">
+          <div class="spinner">
+
+               <span class="spinner-rotate"></span>
+               
+          </div>
+     </section>
+
+
+     <!-- MENU -->
+     <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+          <div class="container">
+
+               <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                    </button>
+
+                    <!-- lOGO TEXT HERE -->
+                    <a href="/" class="navbar-brand">Book your Books</a>
+               </div>
+
+               <!-- MENU LINKS -->
+               <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                         <li><a href="/" class="smoothScroll">Home</a></li>
+                         <li><a href="/" class="smoothScroll">Features</a></li>
+                         <li><a href="/" class="smoothScroll">About us</a></li>
+                         <li><a href="/" class="smoothScroll">Booked</a></li>
+                         <li><a href="/register" class="smoothScroll">Login/Register</a></li>
+                    </ul>
+
+               </div>
+
+          </div>
+     </section>
+
+
+     <!-- FEATURE -->
+     <section id="home" data-stellar-background-ratio="0.5">
+          <div class="overlay"></div>
+          <div class="container">         
+                    <div class="col-md-offset-1 col-md-10 col-sm-12">
+                         <form action="" method="POST">
+                              <h1>Registration</h1>
+                              {% include "includes/_message.html" %}
+                              {% block body %}
+                              {% endblock %}
+                              <div class="form-group">
+                                  <input type="text" name="name" class="form-control" placeholder="name" required>
+                              </div>
+                              <div class="form-group">
+                                  <input type="text" name="lastname" class="form-control" placeholder="lastname" required>
+                              </div>
+                              <div class="form-group">
+                                  <input type="email" name="reg-email" class="form-control" placeholder="email" required>
+                              </div>
+                              <div class="form-group">
+                                  <input type="password" name="reg-password" class="form-control" placeholder="password" required>
+                              </div>
+                              <div class="form-group">
+                                  <input type="password" name="retype-reg-password" class="form-control" placeholder="confirm password" required>
+                              </div>
+                              <button class="btn btn-primary" type="submit">Register</button>
+                          </form>
+               </div>
+     </section>
+
+
+
+
+     <!-- FOOTER -->
+     <footer id="footer" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="copyright-text col-md-12 col-sm-12">
+                         <div class="col-md-6 col-sm-6">
+                              <p>Copyright &copy; 2020 Zoran Nikolić</p>
+                         </div>
+
+                         <div class="col-md-6 col-sm-6">
+                              <ul class="social-icon">
+                                   <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
+                                   <li><a href="#" class="fa fa-twitter"></a></li>
+                                   <li><a href="#" class="fa fa-instagram"></a></li>
+                              </ul>
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+     </footer>
+
+
+     <!-- SCRIPTS -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/jquery.stellar.min.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/smoothscroll.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+     
+</body>
+</html>

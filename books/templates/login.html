@@ -69,31 +69,33 @@
      <!-- FEATURE -->
      <section id="home" data-stellar-background-ratio="0.5">
           <div class="overlay"></div>
-          <div class="container">         
+          <div class="container">
+               <div class="row">          
                     <div class="col-md-offset-1 col-md-10 col-sm-12">
-                         <form action="" method="POST">
-                              <h1>Registration</h1>
-                              {% include "includes/_message.html" %}
-                              {% block body %}
-                              {% endblock %}
-                              <div class="form-group">
-                                  <input type="text" name="name" class="form-control" placeholder="name" required>
-                              </div>
-                              <div class="form-group">
-                                  <input type="text" name="lastname" class="form-control" placeholder="lastname" required>
-                              </div>
-                              <div class="form-group">
-                                  <input type="email" name="reg-email" class="form-control" placeholder="email" required>
-                              </div>
-                              <div class="form-group">
-                                  <input type="password" name="reg-password" class="form-control" placeholder="password" required>
-                              </div>
-                              <div class="form-group">
-                                  <input type="password" name="retype-reg-password" class="form-control" placeholder="confirm password" required>
-                              </div>
-                              <button class="btn btn-primary" type="submit">Register</button>
-                          </form>
+                         <form id="contact-form" role="form" action="/login" method="POST">
+                              <div class="section-title">
+                                   <h1>Log in</h1>
+                                   {% include "includes/_message.html" %}
+                                   {% block body %}
+                                   {% endblock %}
+                                   </div>
+                                        <div class="col-md-4 col-sm-4">
+                                             <input type="email" class="form-control" placeholder="email" name="email" required>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4">
+                                             <input type="password" class="form-control" placeholder="Password" name="password" required>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4">
+                                             <input type="submit" class="form-control" name="login" value="Login">
+                                        </div>
+                                        
+                         </form>
+                         
+                         <button onclick="window.location.href='/register'" class="btn btn-default" name="register" >Sign Up</button>
+                         
+                    </div>
                </div>
+          </div>
      </section>
 
 
@@ -131,6 +133,6 @@
      <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
      <script src="{{ url_for('static', filename='js/smoothscroll.js') }}"></script>
      <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
-     
+
 </body>
 </html>

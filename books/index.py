@@ -8,7 +8,7 @@ import json
 
 app = Flask(__name__, static_url_path='')
 # Connect to DB and set cursor
-db = MC.connect(host='localhost', database='users', user='admin', password='admin')
+db = MC.connect(host='zoka.adriaexcursion.com', database='adriaexc_db', user='zoka', password='Zok@zok@91')
 
 @app.route('/', methods=['GET','POST'])
 def root():   
@@ -21,34 +21,31 @@ def root():
 @app.route("/login", methods=['GET','POST'])
 def login():
     
-    cursor = db.cursor(buffered=True) # (buffered=True) - fixes error mysql.connector Unread result found
+    cursor = db.cursor(buffered=True) #fixes error mysql.connector Unread result found
     if request.method == "POST":
         email = request.form.get("email")
         passw =  request.form.get("password")
-        print(f"1 email: {email} 1 password: {passw}")
-        email_data = cursor.execute("SELECT email FROM registered_users WHERE email = %s ",(email,)) 
-        password_data = cursor.execute("SELECT password FROM registered_users WHERE email = %s ",(email,))
+        
+        email_data = cursor.execute("SELECT email FROM registered_users WHERE email = %s ",(email,))
+        cursor.execute("SELECT password FROM registered_users WHERE password = %s ",(passw,))
         email_data = cursor.fetchone()
         password_data = cursor.fetchone()
-        print(f"2 email: {email_data} 2 password: {password_data}")
         flash(f" email_data = {email_data} password_data = {password_data}", "success")
         db.commit() 
         cursor.close()
    
 
-        if email_data is None:
+        '''if email_data is None:
             flash("email is not registered - Sign Up", "danger")
-            return redirect(url_for("login")) 
-        else:
-            for pass_data in email_data: # <- neznam zašto ali je u emailu hash passworda
-                if sha256_crypt.verify(passw, pass_data): # <- error je sad ovdje
-                    flash("You are logged", "success")
-                    return render_template("logged.html")
-                else:
-                    flash("Incorrect password", "danger")
-                    return redirect(url_for("login"))
-        
-        
+            return redirect(url_for("login"))
+        else: '''
+        for pass_data in password_data:
+            if sha256_crypt.verify(passw, pass_data):
+                flash("You are logged", "success")
+                return render_template("logged.html")
+            else:
+                flash("Incorrect password", "danger")
+                return redirect(url_for("login"))
     return render_template("login.html")
 
 
